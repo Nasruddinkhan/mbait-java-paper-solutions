@@ -39,11 +39,11 @@
        1. A class with a zero-argument constructor is subject to being instantiated in an invalid state. 
            If such a class is instantiated manually by a developer (rather than automatically by some kind of framework), 
            the developer might not realize that the class has been improperly instantiated. 
-           The compiler cannot detect such a problem, and even if it is documented, there is no guarantee that the developer will see the documentatio
-
+           The compiler cannot detect such a problem, and even if it is documented,
+           there is no guarantee that the developer will see the documentatio
        2. JavaBeans are inherently mutable and so lack the advantages offered by immutable objects
-
-       3. Having to create getters for every property and setters for many, most, or all of them can lead to an immense quantity of boilerplate code
+       3. Having to create getters for every property and setters for many, most, 
+          or all of them can lead to an immense quantity of boilerplate code
   
 
 
