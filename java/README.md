@@ -44,12 +44,11 @@
        2. JavaBeans are inherently mutable and so lack the advantages offered by immutable objects
        3. Having to create getters for every property and setters for many, most, 
           or all of them can lead to an immense quantity of boilerplate code
+# d) RMI
+   In computing, the Java Remote Method Invocation (Java RMI) is a Java API that performs remote method invocation,
+   the object-oriented equivalent of remote procedure calls (RPC), with support for direct transfer of serialized Java classes and distributed garbage-collection.
+
+
+
+    
   
-
-
-
-   
-
-
-
-   
