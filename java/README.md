@@ -20,5 +20,14 @@
    3) Network Protocol Driver 
    4) Thin Driver 
 
+# Socket
+   A socket is an endpoint for communication between two machines. This class implements client sockets (also called just "sockets")
+   The actual work of the socket is performed by an instance of the SocketImpl class. An application, by changing the socket factory that creates the socket implementation, can configure itself to create sockets appropriate to the local firewall.
+
+Socket and ServerSocket classes are used for connection-oriented socket programming and DatagramSocket and DatagramPacket classes are used for connection-less socket programming.
+
+   
+
+
 
    
