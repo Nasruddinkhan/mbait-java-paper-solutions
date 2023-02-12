@@ -26,3 +26,7 @@ hs_err_pid*
 /java/socketprograms/.project
 /java/socketprograms/.settings/org.eclipse.core.resources.prefs
 /java/socketprograms/.settings/org.eclipse.jdt.core.prefs
+/java/crud-example/.settings/
+/java/crud-example/build/
+/java/crud-example/.classpath
+/java/crud-example/.project
