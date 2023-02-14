@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	import="java.sql.*" pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,50 +9,52 @@
 <title>Book Details</title>
 </head>
 <body>
-	<h3>Enter Book Name:</h3>
 	<form action="book.jsp" method="post">
-		<input type="text" name="bookName" /> <input type="submit"
-			value="Submit" />
+		<input type="text" name="bookName" />
+		<button type="submit">Search</button>
 	</form>
 	<%
-    String bookName = request.getParameter("bookName");
-    if (bookName != null) {
-    	try {
-    	Class.forName("oracle.jdbc.driver.OracleDriver");
+	String bookName = request.getParameter("bookName");
+	if (bookName != null) {
+	%>
+	<%
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "system");
-		PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM product where name = ?");
-		pstmt.setString(1, bookName);
-        ResultSet rs  = pstmt.executeQuery();
-        if (rs.next()) {
-  %>
-	<h3>Book Details:</h3>
+		PreparedStatement pstm = conn.prepareStatement("select * from book where ISBN = ?");
+		pstm.setString(1, bookName);
+		ResultSet rs = pstm.executeQuery();
+	%>
 	<table border="1">
 		<tr>
-			<td>Product Name</td>
-			<td><%= rs.getString("NAME") %></td>
-		</tr>
-		<tr>
-			<td>Price</td>
-			<td><%= rs.getString("PRICE") %></td>
-		</tr>
-		<tr>
-			<td>Quantity</td>
-			<td><%= rs.getInt("QUANTITY") %></td>
+			<th>Author</th>
+			<th>Description</th>
+			<th>Title</th>
+
 		</tr>
 
+		<%
+		if (rs.next()) {
+		%>
+		<tr>
+			<td><%=rs.getString("author")%></td>
+			<td><%=rs.getString("description")%></td>
+			<td><%=rs.getString("title")%></td>
+		</tr>
+		<%
+		}
+		%>
 	</table>
 	<%
-        } else {
-  %>
-	<p>
-		No book found with the name "<%= bookName %>".
-	</p>
-	<%
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
-  %>
+	rs.close();
+	pstm.close();
+	conn.close();
+	} 
+	catch (Exception e) {
+		e.printStackTrace();
+		}
+	}
+	%>
+
 </body>
 </html>
